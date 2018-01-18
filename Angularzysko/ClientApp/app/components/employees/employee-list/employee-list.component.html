@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p *ngIf="!employeeService.employeeList"><em>Loading...</em></p>
+
+    <table class="table table-sm table-hover" *ngIf="employeeService.employeeList">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Address</th>
+                <th>Telephone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employeeService.employeeList">
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.surname }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.telephone }}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(employee.name, employee.surname, employee.telephone, employee.address, employee.id)" >Edit
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" (click)="onDelete(employee.id)">Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
